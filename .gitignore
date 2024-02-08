@@ -1,4 +1,4 @@
 *.o 
 *.exe 
 
-duota.txt
+/duota.txt
