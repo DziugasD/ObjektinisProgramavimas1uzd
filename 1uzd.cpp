@@ -3,36 +3,36 @@
 using namespace std;
 
 struct studentas{
-	string vardas, pavarde; 
-	int skaicius, pazymiai, egzaminas;
-	double galutinis;  	
+	string vardas, pavarde;
+	int skaicius;
+	int pazymiai[10000], egzaminas;
+	double galutinis;
 };
 
 
 int main(){
-	
+
 	freopen("duota.txt", "r", stdin);
-	
-	int n; 
-	cin >> n; 
-	studentas v[n]; 
-	
-	for(int i=0; i<n; i++){ 
+
+	int n;
+	cin >> n;
+	studentas v[n];
+
+	for(int i=0; i<n; i++){
 		cin >> v[i].vardas >> v[i].pavarde >> v[i].skaicius;
-		v[i].pazymiai=0;  
 		for(int j=0; j<v[i].skaicius; j++){
-			int x; 
-			cin >> x; 
-			v[i].pazymiai +=x; 
+			cin >> v[i].pazymiai[j];
 		}
-		cin >> v[i].egzaminas; 
-		v[i].galutinis = 0.4 * v[i].pazymiai/v[i].skaicius + 1.6 * v[i].egzaminas; 
+		cin >> v[i].egzaminas;
+		int sum = accumulate(v[i].pazymiai, v[i].pazymiai + v[i].skaicius, 0);
+		v[i].galutinis = 0.4 * sum/v[i].skaicius + 0.6 * v[i].egzaminas;
 	}
-	
+
+
 	for (int i=0; i<n; i++){
-		cout << v[i].vardas << " " << v[i].pavarde << " " << v[i].galutinis << "\n"; 
+		cout << v[i].vardas << " " << v[i].pavarde << " " << v[i].galutinis << "\n";
 	}
-	
+
 
 	return 0;
 }
