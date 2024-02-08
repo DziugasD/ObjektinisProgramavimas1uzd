@@ -12,8 +12,6 @@ struct studentas{
 
 int main(){
 
-	freopen("duota.txt", "r", stdin);
-
 	int n;
 	cin >> n;
 	studentas v[n];
@@ -37,12 +35,14 @@ int main(){
         }
 	}
 
-
+    cout << left << setw(15)  << "Pavardė" << setw(10) << "Vardas" << setw(17) << "Galutinis (Vid.) " << setw(20) << "\\ Galutinis (Med.)\n";
+    int bruksneliai = 55;
+    while(bruksneliai--) cout << '-';
+    cout << "\n";
 
 	for (int i=0; i<n; i++){
-		cout << v[i].vardas << " " << v[i].pavarde << " " << fixed << setprecision(2) << v[i].galutinis << " " << v[i].mediana <<"\n";
+		cout << fixed << setprecision(2) << setw(15) << v[i].pavarde << setw(10) << v[i].vardas << setw(19) << v[i].galutinis << setw(20) << v[i].mediana <<"\n";
 	}
-
 
 	return 0;
 }
