@@ -40,7 +40,7 @@ int main(){
 
 
 	for (int i=0; i<n; i++){
-		cout << v[i].vardas << " " << v[i].pavarde << " " << v[i].galutinis << " " << v[i].mediana <<"\n";
+		cout << v[i].vardas << " " << v[i].pavarde << " " << fixed << setprecision(2) << v[i].galutinis << " " << v[i].mediana <<"\n";
 	}
 
 
