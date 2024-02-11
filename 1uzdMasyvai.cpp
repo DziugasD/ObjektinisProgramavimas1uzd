@@ -39,14 +39,13 @@ int main()
 {
     srand(time(nullptr));
 
-    int variantas;
 
     int dydis = 0, allocated = 1;
     studentas* v = new studentas[allocated];
 
     while(true)
     {
-
+        int variantas;
         cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentu vardus, pavardes, 4 - baigti darba\n";
         cin >> variantas;
 
@@ -71,7 +70,7 @@ int main()
             s.pavarde = generuoti_varda(3+rand()%10);
         }
 
-        if(variantas == 0)
+        if(variantas == 1)
         {
             while(true)
             {
