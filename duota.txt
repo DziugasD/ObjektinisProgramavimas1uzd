@@ -1,0 +1,11 @@
+10
+John Doe 5 85 90 88 92 89 95
+Jane Smith 4 90 95 85 92 90
+Bob Johnson 3 88 85 90 88
+Alice Williams 6 85 90 92 88 85 90 92
+Charlie Brown 5 85 88 90 92 85 89
+David Davis 4 10 20 21 30 90
+Eve Evans 3 85 88 90 88
+Frank Ford 6 85 90 92 88 85 90 92
+Grace Garcia 5 85 88 90 92 85 89
+Heidi Hernandez 4 90 92 85 90 90
