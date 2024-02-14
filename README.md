@@ -4,7 +4,7 @@ Programa skirta skaičiuoti galutinį balą pagal įvestus duomenis.
 
 ## Funkcionalumas
 
-- Įvedimo langas, kuriame vartotojas įveda studento vardą, pavardą, namų darbų pažymius ir egzamino rezultatą.
+- Įvedimo langas, kuriame vartotojas įveda studento vardą, pavardę, namų darbų pažymius ir egzamino rezultatą.
 - Galutinio balo skaičiavimas pagal vidurkį ar medianą.
 - Išvedimo langas, kuriame pateikiami studentų galutiniai balai.
 
