@@ -9,7 +9,6 @@ struct studentas{
 	double galutinis, mediana;
 };
 
-
 string generuoti_varda(int ilgis)
 {
     string vardas;
@@ -21,6 +20,11 @@ string generuoti_varda(int ilgis)
     return vardas;
 }
 
+bool yraint(string s)
+{
+    for(int i=0; i<s.size(); i++) if(isdigit(s[i])) return true;
+    return false;
+}
 
 vector<int> generuoti_pazymius(int dydis)
 {
@@ -42,7 +46,13 @@ int main(){
 
         int variantas;
         cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentu vardus, pavardes, 4 - baigti darba\n";
-        cin >> variantas;
+
+        while(!(cin>> variantas) || variantas < 1 || variantas > 4){
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cout << "Netinkama ivestis\n";
+            cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentu vardus, pavardes, 4 - baigti darba\n";
+        }
 
         if(variantas == 4) break;
 
@@ -50,9 +60,19 @@ int main(){
         if(variantas < 3)
         {
             cout << "Irasykite studento varda\n";
-            cin >> s.vardas;
+            while( !(cin >> s.vardas) || yraint(s.vardas) ){
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cout << "Netinkama ivestis. Iveskite varda be skaiciu\n";
+                cout << "Irasykite studento varda\n";
+            };
             cout << "Irasykite studento pavarde\n";
-            cin >> s.pavarde;
+            while( !(cin >> s.pavarde) || yraint(s.pavarde) ){
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cout << "Netinkama ivestis. Iveskite varda be skaiciu\n";
+                cout << "Irasykite studento pavarde\n";
+            };
 
         }
         else
@@ -64,16 +84,21 @@ int main(){
         if(variantas == 1){
             while(true){
                 int x;
-                cout << "Irasykite studento pazymi arba noredami uzbaigti iveskite bet kokia raide\n";
-                if(!(cin >> x)){
+                cout << "Irasykite studento pazymi arba noredami uzbaigti iveskite -1\n";
+                while(!(cin >> x) || x<1 || x>10)
+                {
+                    if(x == -1) break;
                     cin.clear();
                     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                    break;
+                    cout << "Netinkama ivestis. Iveskite skaiciu nuo 1 iki 10\n";
                 }
+                if(x == -1) break;
                 s.pazymiai.push_back(x);
             }
             cout << "Irasykite studento egzamino pazymi\n";
-            cin >> s.egzaminas;
+            while(!(cin >> s.egzaminas) || s.egzaminas<1 || s.egzaminas > 10){
+                cout << "Netinkama ivestis. Iveskite skaiciu nuo 1 iki 10\n";
+            }
         }
         else{
             s.pazymiai = generuoti_pazymius(rand()%10);
@@ -92,12 +117,12 @@ int main(){
             else{
                   s.mediana = (s.pazymiai[vid] + s.pazymiai[vid - 1]) / 2.0;
             }
+            s.mediana = 0.4*s.mediana + 0.6*s.egzaminas;
 		}
         else{
             s.galutinis = 0.6*s.egzaminas;
-            s.mediana = 0;
+            s.mediana = 0.6*s.egzaminas;
         }
-
         v.push_back(s);
 	}
 
