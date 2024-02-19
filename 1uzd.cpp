@@ -3,7 +3,6 @@
 using namespace std;
 
 
-
 struct studentas
 {
     string vardas, pavarde;
@@ -160,9 +159,46 @@ void spausdinimas(vector<studentas> v)
     {
         spausdinimas << fixed << setprecision(2) << setw(pavardesIlgis+5) << v[i].pavarde << setw(vardoIlgis+5) << v[i].vardas << setw(19) << v[i].galutinis << setw(20) << v[i].mediana <<"\n";
     }
-    cout << spausdinimas.str();
+    cout << spausdinimas.rdbuf();
 }
 
+bool sortbyVardas(studentas a, studentas b)
+{
+    if(a.vardas > b.vardas) return true;
+    return false;
+}
+bool sortbyPavarde(studentas a, studentas b)
+{
+    if(a.pavarde > b.pavarde) return true;
+    return false;
+}
+bool sortbyGalutinis(studentas a, studentas b)
+{
+    if(a.galutinis > b.galutinis) return true;
+    return false;
+}
+bool sortbyMediana(studentas a, studentas b)
+{
+    if(a.mediana > b.mediana) return true;
+    return false;
+}
+
+void rusiavimas(vector<studentas>& v){
+    cout << "Pagal ka norite rusiuoti? 1 - vardas, 2 - pavarde, 3 - Galutinis vidurkis, 4 - Galutinis mediana, 5 - nerusiuoti\n";
+        int variantas;
+    while(!(cin>> variantas) || variantas < 1 || variantas > 5)
+    {
+        cin.clear();
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cout << "Netinkama ivestis\n";
+        cout << "1 - vardas, 2 - pavarde, 3 - Galutinis vidurkis, 4 - Galutinis mediana\n";
+    }
+    if(variantas == 1) sort(v.begin(), v.end(), sortbyVardas);
+    if(variantas == 2) sort(v.begin(), v.end(), sortbyPavarde);
+    if(variantas == 3) sort(v.begin(), v.end(), sortbyGalutinis);
+    if(variantas == 4) sort(v.begin(), v.end(), sortbyMediana);
+    return;
+}
 
 int main()
 {
@@ -207,6 +243,7 @@ int main()
         {
             ifstream fd("studentai10000.txt");
             failoSkaitymas(fd, v);
+            fd.close();
             break;
         }
         if(variantas == 5) break;
@@ -215,7 +252,7 @@ int main()
 
         v.push_back(s);
     }
-
+    rusiavimas(v);
     spausdinimas(v);
 
     return 0;
