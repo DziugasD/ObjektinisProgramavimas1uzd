@@ -43,10 +43,13 @@ vector<int> generuoti_pazymius(int dydis)
 void failoSkaitymas(ifstream &fd, vector<studentas> &v)
 {
     long long cnt = 0;
-    while(!fd.eof())
+    string s;
+    std::stringstream buffer;
+    buffer << fd.rdbuf();
+
+    while(!buffer.eof())
     {
-        string s;
-        getline(fd, s);
+        getline(buffer, s);
         if(cnt)
         {
             istringstream ss(s);
@@ -241,7 +244,7 @@ int main()
         }
         if(variantas == 4)
         {
-            ifstream fd("studentai10000.txt");
+            ifstream fd("studentai1000000.txt");
             failoSkaitymas(fd, v);
             fd.close();
             break;
