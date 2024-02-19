@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-*.o
-*.exe
-duota.txt
-=======
 *.o 
 *.exe 
-
+*.txt
 /duota.txt
->>>>>>> 7a1b05898da1a6f3fa8afe362a531a0059f4ef59
