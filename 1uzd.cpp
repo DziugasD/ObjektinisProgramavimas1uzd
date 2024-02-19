@@ -141,16 +141,18 @@ void baloSkaiciavimas(studentas &s)
 
 void spausdinimas(vector<studentas> v)
 {
+    stringstream spausdinimas;
     //Spausdinimas
-    cout << left << setw(15)  << "Pavarde" << setw(10) << "Vardas" << setw(17) << "Galutinis (Vid.) " << setw(20) << "\\ Galutinis (Med.)\n";
+    spausdinimas << left << setw(15)  << "Pavarde" << setw(10) << "Vardas" << setw(17) << "Galutinis (Vid.) " << setw(20) << "\\ Galutinis (Med.)\n";
     int bruksneliai = 55;
-    while(bruksneliai--) cout << '-';
-    cout << "\n";
+    while(bruksneliai--) spausdinimas << '-';
+    spausdinimas << "\n";
 
     for (int i=0; i<v.size(); i++)
     {
-        cout << fixed << setprecision(2) << setw(15) << v[i].pavarde << setw(10) << v[i].vardas << setw(19) << v[i].galutinis << setw(20) << v[i].mediana <<"\n";
+        spausdinimas << fixed << setprecision(2) << setw(15) << v[i].pavarde << setw(10) << v[i].vardas << setw(19) << v[i].galutinis << setw(20) << v[i].mediana <<"\n";
     }
+    cout << spausdinimas.str();
 }
 
 
