@@ -1,6 +1,11 @@
-# ObjektinisProgramavimas v.0.1
+# ObjektinisProgramavimas v.0.2
 
 Programa skirta skaičiuoti galutinį balą pagal įvestus duomenis.
+
+Programa buvo kurta bandant kelis metodus failo skaitymui
+- getline 
+- rdbuf() (15% greitesnis skaitymo laikas)
+
 
 ## Funkcionalumas
 
