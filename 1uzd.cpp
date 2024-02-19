@@ -148,9 +148,17 @@ void spausdinimas(vector<studentas> v)
     while(bruksneliai--) spausdinimas << '-';
     spausdinimas << "\n";
 
+
+    int vardoIlgis=0, pavardesIlgis = 0;
     for (int i=0; i<v.size(); i++)
     {
-        spausdinimas << fixed << setprecision(2) << setw(15) << v[i].pavarde << setw(10) << v[i].vardas << setw(19) << v[i].galutinis << setw(20) << v[i].mediana <<"\n";
+        vardoIlgis = max(vardoIlgis, (int) v[i].vardas.size());
+        pavardesIlgis = max(pavardesIlgis, (int) v[i].pavarde.size());
+    }
+
+    for (int i=0; i<v.size(); i++)
+    {
+        spausdinimas << fixed << setprecision(2) << setw(pavardesIlgis+5) << v[i].pavarde << setw(vardoIlgis+5) << v[i].vardas << setw(19) << v[i].galutinis << setw(20) << v[i].mediana <<"\n";
     }
     cout << spausdinimas.str();
 }
