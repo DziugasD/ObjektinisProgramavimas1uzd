@@ -141,7 +141,7 @@ void baloSkaiciavimas(studentas &s)
     return;
 }
 
-void spausdinimas(vector<studentas> v)
+void spausdinimas(vector<studentas> &v)
 {
     stringstream spausdinimas;
     //Spausdinimas
@@ -165,30 +165,26 @@ void spausdinimas(vector<studentas> v)
     cout << spausdinimas.rdbuf();
 }
 
-bool sortbyVardas(studentas a, studentas b)
+bool sortbyVardas(const studentas &a, const studentas &b)
 {
-    if(a.vardas > b.vardas) return true;
-    return false;
+    return (a.vardas > b.vardas);
 }
-bool sortbyPavarde(studentas a, studentas b)
+bool sortbyPavarde(const studentas &a, const studentas &b)
 {
-    if(a.pavarde > b.pavarde) return true;
-    return false;
+    return (a.pavarde > b.pavarde);
 }
-bool sortbyGalutinis(studentas a, studentas b)
+bool sortbyGalutinis(const studentas &a, const studentas &b)
 {
-    if(a.galutinis > b.galutinis) return true;
-    return false;
+    return (a.galutinis > b.galutinis);
 }
-bool sortbyMediana(studentas a, studentas b)
+bool sortbyMediana(const studentas &a, const studentas &b)
 {
-    if(a.mediana > b.mediana) return true;
-    return false;
+    return (a.mediana > b.mediana);
 }
 
 void rusiavimas(vector<studentas>& v){
     cout << "Pagal ka norite rusiuoti? 1 - vardas, 2 - pavarde, 3 - Galutinis vidurkis, 4 - Galutinis mediana, 5 - nerusiuoti\n";
-        int variantas;
+    int variantas;
     while(!(cin>> variantas) || variantas < 1 || variantas > 5)
     {
         cin.clear();

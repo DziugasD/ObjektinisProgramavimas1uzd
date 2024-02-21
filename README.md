@@ -2,6 +2,15 @@
 
 Programa skirta skaičiuoti galutinį balą pagal įvestus duomenis.
 
+
+## Programos greitis skaitant iš failo (5 kartų vidurkis)
+
+|  | v.0.2 |
+| :--- | ---- |
+| studentai10000 | 244 ms |
+| studentai100000 | 2305 ms |
+| studentai1000000 | 18784 ms |
+
 ## Funkcionalumas
 
 - Įvedimo langas, kuriame vartotojas įveda studento vardą, pavardę, namų darbų pažymius ir egzamino rezultatą.
