@@ -1,11 +1,11 @@
-# ObjektinisProgramavimas v.0.2
+# ObjektinisProgramavimas v0.2
 
 Programa skirta skaičiuoti galutinį balą pagal įvestus duomenis.
 
 
 ## Programos greitis skaitant iš failo (5 kartų vidurkis)
 
-|  | v.0.2 |
+|  | v0.2 |
 | :--- | ---- |
 | studentai10000 | 244 ms |
 | studentai100000 | 2305 ms |
