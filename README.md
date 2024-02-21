@@ -1,4 +1,4 @@
-# ObjektinisProgramavimas v.0.1
+# ObjektinisProgramavimas v.0.2
 
 Programa skirta skaičiuoti galutinį balą pagal įvestus duomenis.
 
