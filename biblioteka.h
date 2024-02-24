@@ -1,9 +1,10 @@
 #include <bits/stdc++.h>
 
+
 struct studentas
 {
-    string vardas, pavarde;
-    vector<int> pazymiai;
+    std::string vardas, pavarde;
+    std::vector<int> pazymiai;
     int egzaminas;
     double galutinis, mediana;
 };

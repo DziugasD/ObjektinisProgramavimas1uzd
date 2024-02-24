@@ -1,0 +1,3 @@
+#include "biblioteka.h"
+
+//funkcijos 
