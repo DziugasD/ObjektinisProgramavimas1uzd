@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 
-
 struct studentas
 {
     std::string vardas, pavarde;
