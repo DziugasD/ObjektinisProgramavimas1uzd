@@ -12,13 +12,20 @@ int main()
     {
         int variantas;
         cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentu vardus, pavardes, 4 - skaityti is failo, 5 - baigti darba\n";
-
+	
+		
+	
         while(!(cin>> variantas) || variantas < 1 || variantas > 5)
         {
-            cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            cout << "Netinkama ivestis\n";
-            cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentu vardus, pavardes, 4 - baigti darba\n";
+			try{
+				throw runtime_error("Netinkamas ivestis\n"); 
+			}
+			catch (const runtime_error &e){
+			    cin.clear();
+				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				cout << e.what();
+				cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentu vardus, pavardes, 4 - baigti darba\n";
+			}
         }
 
         studentas s;

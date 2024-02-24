@@ -65,18 +65,29 @@ void vardoSkaitymas(studentas &s)
     cout << "Irasykite studento varda\n";
     while( !(cin >> s.vardas) || yraint(s.vardas) )
     {
-        cin.clear();
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "Netinkama ivestis. Iveskite varda be skaiciu\n";
-        cout << "Irasykite studento varda\n";
+		try{
+			throw runtime_error("Netinkama ivestis. "); 
+		}
+		catch(const runtime_error &e){
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << e.what(); 
+			cout << "Iveskite varda be skaiciu\n";
+			cout << "Irasykite studento varda\n";
+		}
     };
     cout << "Irasykite studento pavarde\n";
     while( !(cin >> s.pavarde) || yraint(s.pavarde) )
     {
-        cin.clear();
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "Netinkama ivestis. Iveskite varda be skaiciu\n";
-        cout << "Irasykite studento pavarde\n";
+		try{
+			throw runtime_error("Netinkama ivestis. "); 
+		}
+		catch(const runtime_error &e){
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << e.what();
+			cout << "Iveskite varda be skaiciu\nIrasykite studento pavarde\n";
+		}
     };
     return;
 }
@@ -90,9 +101,15 @@ void pazymiuSkaitymas(studentas &s)
         while(!(cin >> x) || x<1 || x>10)
         {
             if(x == -1) break;
-            cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            cout << "Netinkama ivestis. Iveskite skaiciu nuo 1 iki 10\n";
+            try{
+				throw runtime_error("Netinkama ivestis. "); 
+			}
+			catch(const runtime_error &e){
+			    cin.clear();
+				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				cout << e.what();
+				cout << "Iveskite skaiciu nuo 1 iki 10\n";
+			}
         }
         if(x == -1) break;
         s.pazymiai.push_back(x);
@@ -100,7 +117,15 @@ void pazymiuSkaitymas(studentas &s)
     cout << "Irasykite studento egzamino pazymi\n";
     while(!(cin >> s.egzaminas) || s.egzaminas<1 || s.egzaminas > 10)
     {
-        cout << "Netinkama ivestis. Iveskite skaiciu nuo 1 iki 10\n";
+		try{
+			throw runtime_error("Netinkama ivestis. "); 
+		}
+		catch(const runtime_error &e){
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << e.what();
+			cout << "Iveskite skaiciu nuo 1 iki 10\n";
+		}
     }
     return;
 }
@@ -177,10 +202,16 @@ void rusiavimas(vector<studentas>& v){
     int variantas;
     while(!(cin>> variantas) || variantas < 1 || variantas > 5)
     {
-        cin.clear();
-        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "Netinkama ivestis\n";
-        cout << "1 - vardas, 2 - pavarde, 3 - Galutinis vidurkis, 4 - Galutinis mediana\n";
+		try{
+			throw runtime_error("Netinkama ivestis\n"); 
+		}
+		catch(const runtime_error &e){
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "Netinkama ivestis\n";
+			cout << "1 - vardas, 2 - pavarde, 3 - Galutinis vidurkis, 4 - Galutinis mediana\n";
+		}
+
     }
     if(variantas == 1) sort(v.begin(), v.end(), sortbyVardas);
     if(variantas == 2) sort(v.begin(), v.end(), sortbyPavarde);
