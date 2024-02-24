@@ -1,7 +1,9 @@
-# ObjektinisProgramavimas v0.2
+# ObjektinisProgramavimas v0.3
 
 Programa skirta skaičiuoti galutinį balą pagal įvestus duomenis.
 
+Programa pakeista pagal programavimo standartus. Sudarytas daugiafailis projektas, patobulintas algoritmas randantis klaidas.  
+	
 
 ## Programos greitis skaitant iš failo (5 kartų vidurkis)
 
