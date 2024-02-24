@@ -1,15 +1,6 @@
-#include <bits/stdc++.h>
+#include "biblioteka.h" 
 
 using namespace std;
-
-
-struct studentas
-{
-    string vardas, pavarde;
-    vector<int> pazymiai;
-    int egzaminas;
-    double galutinis, mediana;
-};
 
 void baloSkaiciavimas(studentas&);
 
