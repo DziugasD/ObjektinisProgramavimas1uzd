@@ -1,3 +1,6 @@
+#ifndef BIBLIOTEKA_H
+#define BIBLIOTEKA_H
+
 #include <bits/stdc++.h>
 
 struct studentas
@@ -21,3 +24,5 @@ bool sortbyPavarde(const studentas &, const studentas &);
 bool sortbyGalutinis(const studentas &, const studentas &);
 bool sortbyMediana(const studentas &, const studentas &);
 void rusiavimas(std::vector<studentas>&);
+
+#endif
