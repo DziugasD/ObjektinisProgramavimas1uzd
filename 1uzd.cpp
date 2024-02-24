@@ -2,7 +2,6 @@
 
 using namespace std;
 
-void baloSkaiciavimas(studentas&);
 
 string generuoti_varda(int ilgis)
 {
