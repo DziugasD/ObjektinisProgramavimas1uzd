@@ -2,4 +2,5 @@
 *.exe 
 *.txt
 /duota.txt
+test
 /a.cpp
