@@ -1,4 +1,4 @@
-#include "biblioteka.h" 
+#include "biblioteka.h"
 
 using namespace std;
 
@@ -12,13 +12,13 @@ int main()
     {
         int variantas;
         cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentu vardus, pavardes, 4 - skaityti is failo, 5 - baigti darba\n";
-	
-		
-	
+
+
+
         while(!(cin>> variantas) || variantas < 1 || variantas > 5)
         {
 			try{
-				throw runtime_error("Netinkamas ivestis\n"); 
+				throw runtime_error("Netinkamas ivestis\n");
 			}
 			catch (const runtime_error &e){
 			    cin.clear();
@@ -50,10 +50,24 @@ int main()
         }
         if(variantas == 4)
         {
-            ifstream fd("studentai1000000.txt");
-            failoSkaitymas(fd, v);
-            fd.close();
-            break;
+            do{
+                try{
+                    cout << "Koki faila norite skaityti?\n";
+                    string failas;
+                    cin >> failas;
+                    ifstream fd(failas);
+                    failoSkaitymas(fd, v);
+                    fd.close();
+                    break;
+                }
+                catch(const std::exception& e){
+                    cout << "Netinkama ivestis. Failas neegzistuoja. \n";
+                    cin.clear();
+                    cin.ignore(100, '\n');
+                }
+            }
+            while(true);
+
         }
         if(variantas == 5) break;
 
