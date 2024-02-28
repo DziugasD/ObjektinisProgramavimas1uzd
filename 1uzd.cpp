@@ -56,6 +56,7 @@ int main()
                     string failas;
                     cin >> failas;
                     ifstream fd(failas);
+                    if(!fd.good()) throw runtime_error("Netinkama ivestis");
                     failoSkaitymas(fd, v);
                     fd.close();
                     break;
