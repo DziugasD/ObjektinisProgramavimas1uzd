@@ -221,6 +221,7 @@ void rusiavimas(vector<studentas>& v){
 }
 
 void failoGeneravimas(int dydis, string pavadinimas){
+	auto start = chrono::high_resolution_clock::now(); 
 	stringstream buf; 
 	buf << left << setw(30) << "Vardas" << setw(30) << "Pavarde"; 
 	for(int i=1; i<=10; i++){
@@ -237,4 +238,7 @@ void failoGeneravimas(int dydis, string pavadinimas){
 	ofstream fr(pavadinimas);
 	fr << buf.rdbuf();
 	fr.close(); 
+	auto end = chrono::high_resolution_clock::now();
+	auto diff = chrono::duration_cast<chrono::milliseconds>(end - start); 
+	cout << "Sugeneruotas " << pavadinimas << " failas per: " << diff.count() << " ms\n";
 }

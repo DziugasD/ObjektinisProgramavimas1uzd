@@ -11,7 +11,7 @@ int main()
     while(true)
     {
         int variantas;
-        cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentu vardus, pavardes, 4 - skaityti is failo, 5 - baigti darba\n";
+        cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentu vardus, pavardes, 4 - skaityti is failo, 5 - baigti darba, 6 - generuoti failus\n";
 	
         while(!(cin>> variantas) || variantas < 1 || variantas > 6)
         {
@@ -22,7 +22,7 @@ int main()
 			    cin.clear();
 				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 				cout << e.what();
-				cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentu vardus, pavardes, 4 - baigti darba\n";
+				cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentu vardus, pavardes, 4 - skaityti is failo, 5 - baigti darba, 6 - generuoti failus\n";
 			}
         }
 
@@ -55,7 +55,12 @@ int main()
         }
         if(variantas == 5) break;
 		if(variantas == 6){
-			failoGeneravimas(100, "studentai100.txt");
+			failoGeneravimas(1000, "studentai1000.txt");
+			failoGeneravimas(10000, "studentai10000.txt");
+			failoGeneravimas(100000, "studentai100000.txt");
+			failoGeneravimas(1000000, "studentai1000000.txt");
+			failoGeneravimas(10000000, "studentai10000000.txt");
+			continue;
 		}
         baloSkaiciavimas(s);
 
