@@ -242,3 +242,38 @@ void failoGeneravimas(int dydis, string pavadinimas){
 	auto diff = chrono::duration_cast<chrono::milliseconds>(end - start); 
 	cout << "Sugeneruotas " << pavadinimas << " failas per: " << diff.count() << " ms\n";
 }
+
+
+auto binary_search(vector<studentas> &v, double target){
+	auto low = v.begin(); 
+	auto high = v.end(); 
+	
+	while(low!=high){
+		auto mid = low + (high-low) / 2; 
+		if(mid -> galutinis <= target){
+			low = mid +1; 
+		}
+		else{
+			high = mid; 
+		}
+	}
+	return low; 
+}
+
+void uzd4(int dydis, string pavadinimas){
+	failoGeneravimas(dydis, pavadinimas);
+	
+	ifstream fd(pavadinimas); 
+	vector<studentas> pirmunai, vargsai;  
+	failoSkaitymas(fd, pirmunai);
+	sort(pirmunai.begin(), pirmunai.end(), sortbyGalutinis);
+	auto vieta = binary_search(pirmunai, 5.0); 
+	copy(vieta, pirmunai.end(), back_inserter(vargsai)); 
+	pirmunai.erase(vieta, pirmunai.end()); 
+	spausdinimas(pirmunai);
+	cout << "\n\n\nVARGSAI\n\n\n"; 
+	spausdinimas(vargsai);
+	//ofstream fr("pirmunai.txt"); 
+	//ofstrean fr("vargsai.txt"); 
+}
+
