@@ -24,5 +24,7 @@ bool sortbyPavarde(const studentas &, const studentas &);
 bool sortbyGalutinis(const studentas &, const studentas &);
 bool sortbyMediana(const studentas &, const studentas &);
 void rusiavimas(std::vector<studentas>&);
+void failoGeneravimas(int, std::string); 
+
 
 #endif

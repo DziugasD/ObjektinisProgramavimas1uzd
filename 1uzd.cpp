@@ -13,9 +13,7 @@ int main()
         int variantas;
         cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentu vardus, pavardes, 4 - skaityti is failo, 5 - baigti darba\n";
 	
-		
-	
-        while(!(cin>> variantas) || variantas < 1 || variantas > 5)
+        while(!(cin>> variantas) || variantas < 1 || variantas > 6)
         {
 			try{
 				throw runtime_error("Netinkamas ivestis\n"); 
@@ -56,7 +54,9 @@ int main()
             break;
         }
         if(variantas == 5) break;
-
+		if(variantas == 6){
+			failoGeneravimas(100, "studentai100.txt");
+		}
         baloSkaiciavimas(s);
 
         v.push_back(s);

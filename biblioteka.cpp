@@ -219,3 +219,22 @@ void rusiavimas(vector<studentas>& v){
     if(variantas == 4) sort(v.begin(), v.end(), sortbyMediana);
     return;
 }
+
+void failoGeneravimas(int dydis, string pavadinimas){
+	stringstream buf; 
+	buf << left << setw(30) << "Vardas" << setw(30) << "Pavarde"; 
+	for(int i=1; i<=10; i++){
+		buf << "ND" << setw(4) << i; 
+	}
+	buf << "Egz.\n";
+	for(int i=1; i<=dydis; i++){
+		buf <<  "Vardas"  << setw(24) << i << "Pavarde"  << setw(23) << i; 
+		for(int j=0; j<11; j++){
+			buf << setw(6) << rand()%10; 
+		}
+		buf << "\n";
+	}
+	ofstream fr(pavadinimas);
+	fr << buf.rdbuf();
+	fr.close(); 
+}
