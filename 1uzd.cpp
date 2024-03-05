@@ -1,4 +1,4 @@
-#include "biblioteka.h" 
+#include "biblioteka.h"
 
 using namespace std;
 
@@ -12,11 +12,11 @@ int main()
     {
         int variantas;
         cout << "1 - ranka, 2 - generuoti pazymius, 3 - generuoti ir pazymius ir studentu vardus, pavardes, 4 - skaityti is failo, 5 - baigti darba, 6 - generuoti failus\n";
-	
+
         while(!(cin>> variantas) || variantas < 1 || variantas > 6)
         {
 			try{
-				throw runtime_error("Netinkamas ivestis\n"); 
+				throw runtime_error("Netinkamas ivestis\n");
 			}
 			catch (const runtime_error &e){
 			    cin.clear();
@@ -56,11 +56,10 @@ int main()
         if(variantas == 5) break;
 		if(variantas == 6){
 			uzd4(1000, "studentai1000.txt");
-			//failoGeneravimas(1000, "studentai1000.txt");
-			//failoGeneravimas(10000, "studentai10000.txt");
-			//failoGeneravimas(100000, "studentai100000.txt");
-			//failoGeneravimas(1000000, "studentai1000000.txt");
-			//failoGeneravimas(10000000, "studentai10000000.txt");
+			uzd4(10000, "studentai10000.txt");
+			uzd4(100000, "studentai100000.txt");
+			uzd4(1000000, "studentai1000000.txt");
+//			failoGeneravimas(10000000, "studentai10000000.txt");
 			continue;
 		}
         baloSkaiciavimas(s);

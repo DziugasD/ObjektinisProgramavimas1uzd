@@ -2,7 +2,7 @@
 
 using namespace std;
 
-//funkcijos 
+//funkcijos
 string generuoti_varda(int ilgis)
 {
     string vardas;
@@ -40,6 +40,7 @@ void failoSkaitymas(ifstream &fd, vector<studentas> &v)
     while(!buffer.eof())
     {
         getline(buffer, s);
+        if(s=="") continue;
         if(cnt)
         {
             istringstream ss(s);
@@ -66,12 +67,12 @@ void vardoSkaitymas(studentas &s)
     while( !(cin >> s.vardas) || yraint(s.vardas) )
     {
 		try{
-			throw runtime_error("Netinkama ivestis. "); 
+			throw runtime_error("Netinkama ivestis. ");
 		}
 		catch(const runtime_error &e){
 			cin.clear();
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			cout << e.what(); 
+			cout << e.what();
 			cout << "Iveskite varda be skaiciu\n";
 			cout << "Irasykite studento varda\n";
 		}
@@ -80,7 +81,7 @@ void vardoSkaitymas(studentas &s)
     while( !(cin >> s.pavarde) || yraint(s.pavarde) )
     {
 		try{
-			throw runtime_error("Netinkama ivestis. "); 
+			throw runtime_error("Netinkama ivestis. ");
 		}
 		catch(const runtime_error &e){
 			cin.clear();
@@ -102,7 +103,7 @@ void pazymiuSkaitymas(studentas &s)
         {
             if(x == -1) break;
             try{
-				throw runtime_error("Netinkama ivestis. "); 
+				throw runtime_error("Netinkama ivestis. ");
 			}
 			catch(const runtime_error &e){
 			    cin.clear();
@@ -118,7 +119,7 @@ void pazymiuSkaitymas(studentas &s)
     while(!(cin >> s.egzaminas) || s.egzaminas<1 || s.egzaminas > 10)
     {
 		try{
-			throw runtime_error("Netinkama ivestis. "); 
+			throw runtime_error("Netinkama ivestis. ");
 		}
 		catch(const runtime_error &e){
 			cin.clear();
@@ -203,7 +204,7 @@ void rusiavimas(vector<studentas>& v){
     while(!(cin>> variantas) || variantas < 1 || variantas > 5)
     {
 		try{
-			throw runtime_error("Netinkama ivestis\n"); 
+			throw runtime_error("Netinkama ivestis\n");
 		}
 		catch(const runtime_error &e){
 			cin.clear();
@@ -221,59 +222,115 @@ void rusiavimas(vector<studentas>& v){
 }
 
 void failoGeneravimas(int dydis, string pavadinimas){
-	auto start = chrono::high_resolution_clock::now(); 
-	stringstream buf; 
-	buf << left << setw(30) << "Vardas" << setw(30) << "Pavarde"; 
+	auto start = chrono::high_resolution_clock::now();
+	stringstream buf;
+	buf << left << setw(30) << "Vardas" << setw(30) << "Pavarde";
 	for(int i=1; i<=10; i++){
-		buf << "ND" << setw(4) << i; 
+		buf << "ND" << setw(4) << i;
 	}
 	buf << "Egz.\n";
 	for(int i=1; i<=dydis; i++){
-		buf <<  "Vardas"  << setw(24) << i << "Pavarde"  << setw(23) << i; 
+		buf <<  "Vardas"  << setw(24) << i << "Pavarde"  << setw(23) << i;
 		for(int j=0; j<11; j++){
-			buf << setw(6) << rand()%10; 
+			buf << setw(6) << rand()%10;
 		}
 		buf << "\n";
 	}
 	ofstream fr(pavadinimas);
 	fr << buf.rdbuf();
-	fr.close(); 
+	fr.close();
 	auto end = chrono::high_resolution_clock::now();
-	auto diff = chrono::duration_cast<chrono::milliseconds>(end - start); 
+	auto diff = chrono::duration_cast<chrono::milliseconds>(end - start);
 	cout << "Sugeneruotas " << pavadinimas << " failas per: " << diff.count() << " ms\n";
 }
 
+//
+//auto binary_search(vector<studentas> &v, double target){
+//	auto low = v.begin();
+//	auto high = v.end();
+//
+//	while(low!=high){
+//		auto mid = low + (high-low) / 2;
+//		if(mid -> galutinis <= target){
+//			low = mid +1;
+//		}
+//		else{
+//			high = mid;
+//		}
+//	}
+//	return low;
+//}
 
-auto binary_search(vector<studentas> &v, double target){
-	auto low = v.begin(); 
-	auto high = v.end(); 
-	
-	while(low!=high){
-		auto mid = low + (high-low) / 2; 
-		if(mid -> galutinis <= target){
-			low = mid +1; 
-		}
-		else{
-			high = mid; 
-		}
-	}
-	return low; 
+bool compareByGalutinis(const double b, const studentas& a){
+    return a.galutinis < b;
+}
+
+void spausdinimasFaila(vector<studentas> &v, string pavadinimas){
+        stringstream spausdinimas;
+    //Spausdinimas
+    spausdinimas << left << setw(15)  << "Pavarde" << setw(10) << "Vardas" << setw(17) << "Galutinis (Vid.) " << setw(20) << "\\ Galutinis (Med.)\n";
+    int bruksneliai = 55;
+    while(bruksneliai--) spausdinimas << '-';
+    spausdinimas << "\n";
+
+
+    int vardoIlgis=0, pavardesIlgis = 0;
+    for (int i=0; i<v.size(); i++)
+    {
+        vardoIlgis = max(vardoIlgis, (int) v[i].vardas.size());
+        pavardesIlgis = max(pavardesIlgis, (int) v[i].pavarde.size());
+    }
+
+    for (int i=0; i<v.size(); i++)
+    {
+        spausdinimas << fixed << setprecision(2) << setw(pavardesIlgis+5) << v[i].pavarde << setw(vardoIlgis+5) << v[i].vardas << setw(19) << v[i].galutinis << setw(20) << v[i].mediana <<"\n";
+    }
+    ofstream fr(pavadinimas);
+    fr << spausdinimas.rdbuf();
+    fr.close();
 }
 
 void uzd4(int dydis, string pavadinimas){
+    cout << "\n" << pavadinimas.substr(0, pavadinimas.size()-4) << "\n";
+
 	failoGeneravimas(dydis, pavadinimas);
-	
-	ifstream fd(pavadinimas); 
-	vector<studentas> pirmunai, vargsai;  
+
+    auto start = chrono::high_resolution_clock::now();
+	ifstream fd(pavadinimas);
+	vector<studentas> pirmunai, vargsai;
 	failoSkaitymas(fd, pirmunai);
+	fd.close();
+    auto end = chrono::high_resolution_clock::now();
+	auto diff = chrono::duration_cast<chrono::milliseconds>(end - start);
+    cout << "Failas perskaitytas per: " << diff.count() << " ms\n";
+
+    start = chrono::high_resolution_clock::now();
 	sort(pirmunai.begin(), pirmunai.end(), sortbyGalutinis);
-	auto vieta = binary_search(pirmunai, 5.0); 
-	copy(vieta, pirmunai.end(), back_inserter(vargsai)); 
-	pirmunai.erase(vieta, pirmunai.end()); 
-	spausdinimas(pirmunai);
-	cout << "\n\n\nVARGSAI\n\n\n"; 
-	spausdinimas(vargsai);
-	//ofstream fr("pirmunai.txt"); 
-	//ofstrean fr("vargsai.txt"); 
+    end = chrono::high_resolution_clock::now();
+	diff = chrono::duration_cast<chrono::milliseconds>(end - start);
+    cout << "Surikiuoti studentai per: " << diff.count() << " ms\n";
+
+
+    start = chrono::high_resolution_clock::now();
+	auto vieta = upper_bound(pirmunai.begin(), pirmunai.end(), 5.0, compareByGalutinis);
+	copy(vieta, pirmunai.end(), back_inserter(vargsai));
+	pirmunai.erase(vieta, pirmunai.end());
+    end = chrono::high_resolution_clock::now();
+	diff = chrono::duration_cast<chrono::milliseconds>(end - start);
+    cout << "Paskirstyti pirmunai ir vargsai per: " << diff.count() << " ms\n";
+
+
+    start = chrono::high_resolution_clock::now();
+	spausdinimasFaila(pirmunai, "pirmunai.txt");
+    end = chrono::high_resolution_clock::now();
+	diff = chrono::duration_cast<chrono::milliseconds>(end - start);
+    cout << "Isspausdintas pirmunu failas per: " << diff.count() << " ms\n";
+
+    start = chrono::high_resolution_clock::now();
+	spausdinimasFaila(vargsai, "vargsai.txt");
+    end = chrono::high_resolution_clock::now();
+	diff = chrono::duration_cast<chrono::milliseconds>(end - start);
+    cout << "Isspausdintas vargsu failas per: " << diff.count() << " ms\n";
+
 }
 
