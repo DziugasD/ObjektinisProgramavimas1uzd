@@ -7,12 +7,12 @@ Programa pakeista pagal programavimo standartus. Sudarytas daugiafailis projekta
 
 ## Programos testavimo laikai (5 kartų vidurkis)
 
-|  |Failo generavimo laikas|Failo skaitymo greitis| Studentu rusiavimo laikas | Studentu paskirstymo laikas | Vargsu irasymo i faila laikas | Pirmunu irasymo i faila laikas |
-| :--- | ---- | ---- | ---- | ---- | ---- | ---- |
-| studentai1000 | 85 ms | 12 ms | 2 ms | 0 ms | 127 ms | 94 ms |
-| studentai10000 | 157 ms | 71 ms | 26 ms | 2 ms | 150 ms | 103 ms |
-| studentai100000 | 480 ms | 640 ms | 356 ms | 27 ms | 192 ms | 216 ms |
-| studentai1000000 | 3375 ms | 5634 ms | 3749 ms | 359 ms | 1265 ms | 1703 ms |
+|  |Failo generavimo laikas|Failo skaitymo greitis| Studentu rusiavimo laikas | Studentu paskirstymo laikas | Vargsu irasymo i faila laikas | Pirmunu irasymo i faila laikas | Visas veikimo laikas |
+| :--- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| studentai1000 | 85 ms | 12 ms | 2 ms | 0 ms | 127 ms | 94 ms | 342 ms |
+| studentai10000 | 157 ms | 71 ms | 26 ms | 2 ms | 150 ms | 103 ms | 346 ms |
+| studentai100000 | 480 ms | 640 ms | 356 ms | 27 ms | 192 ms | 216 ms | 1819 ms |
+| studentai1000000 | 3375 ms | 5634 ms | 3749 ms | 359 ms | 1265 ms | 1703 ms | 19076 ms |
 
 ## Funkcionalumas
 

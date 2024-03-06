@@ -265,6 +265,10 @@ bool compareByGalutinis(const double b, const studentas& a){
     return a.galutinis < b;
 }
 
+bool compareByMediana(const double b, const studentas& a){
+    return a.mediana < b;
+}
+
 void spausdinimasFaila(vector<studentas> &v, string pavadinimas){
         stringstream spausdinimas;
     //Spausdinimas
@@ -295,6 +299,8 @@ void uzd4(int dydis, string pavadinimas){
 
 	failoGeneravimas(dydis, pavadinimas);
 
+    auto visasLaikas = chrono::high_resolution_clock::now();
+
     auto start = chrono::high_resolution_clock::now();
 	ifstream fd(pavadinimas);
 	vector<studentas> pirmunai, vargsai;
@@ -304,15 +310,42 @@ void uzd4(int dydis, string pavadinimas){
 	auto diff = chrono::duration_cast<chrono::milliseconds>(end - start);
     cout << "Failas perskaitytas per: " << diff.count() << " ms\n";
 
+
+    auto rinkLaikas = chrono::high_resolution_clock::now();
+    int x = 0;
+    cout << "Rusiuoti pagal 1 - Galutinis vid., 2 - Galutinis med.\n";
+    while(!(cin >> x) && x>2 && x<1){
+		try{
+			throw runtime_error("Netinkama ivestis\n");
+		}
+		catch(const runtime_error &e){
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << e.what();
+			cout << "Rusiuoti pagal 1 - Galutinis vid., 2 - Galutinis med.\n";
+		}
+    }
+    auto rinkLaikasPab = chrono::high_resolution_clock::now();
+	auto rinkLaikasdiff = chrono::duration_cast<chrono::milliseconds>(rinkLaikasPab - rinkLaikas);
+
+
     start = chrono::high_resolution_clock::now();
-	sort(pirmunai.begin(), pirmunai.end(), sortbyGalutinis);
+    if(x==1)
+        sort(pirmunai.begin(), pirmunai.end(), sortbyGalutinis);
+    else
+        sort(pirmunai.begin(), pirmunai.end(), sortbyMediana);
+
     end = chrono::high_resolution_clock::now();
 	diff = chrono::duration_cast<chrono::milliseconds>(end - start);
     cout << "Surikiuoti studentai per: " << diff.count() << " ms\n";
 
 
     start = chrono::high_resolution_clock::now();
-	auto vieta = upper_bound(pirmunai.begin(), pirmunai.end(), 5.0, compareByGalutinis);
+    vector<studentas>::iterator vieta;
+    if(x==1)
+        vieta = upper_bound(pirmunai.begin(), pirmunai.end(), 5.0, compareByGalutinis);
+    else
+        vieta = upper_bound(pirmunai.begin(), pirmunai.end(), 5.0, compareByMediana);
 	copy(vieta, pirmunai.end(), back_inserter(vargsai));
 	pirmunai.erase(vieta, pirmunai.end());
     end = chrono::high_resolution_clock::now();
@@ -331,6 +364,11 @@ void uzd4(int dydis, string pavadinimas){
     end = chrono::high_resolution_clock::now();
 	diff = chrono::duration_cast<chrono::milliseconds>(end - start);
     cout << "Isspausdintas vargsu failas per: " << diff.count() << " ms\n";
+
+
+    auto visasLaikasPab = chrono::high_resolution_clock::now();
+	auto visasLaikasdiff = chrono::duration_cast<chrono::milliseconds>(visasLaikasPab - visasLaikas);
+	cout << "Visas programos veikimo laikas: " << visasLaikasdiff.count() - rinkLaikasdiff.count() << " ms\n";
 
 }
 
