@@ -7,7 +7,7 @@ Programa pakeista pagal programavimo standartus. Sudarytas daugiafailis projekta
 
 ## Programos testavimo laikai (5 kartų vidurkis)
 
-|  |Failo generavimo laikas|Failo skaitymo greitis| Studentu rusiavimo laikas | Studentu paskirstymo laikas | Vargsu irasymo i faila laikas | Pirmunu irasymo i faila laikas | Visas veikimo laikas |
+|  |Failo generavimo laikas|Failo skaitymo greitis| Studentu rūšiavimo laikas | Studentų paskirstymo laikas | Vargšų įrašymo į failą laikas | Pirmūnų įrašymo i failą laikas | Visas veikimo laikas |
 | :--- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | studentai1000 | 85 ms | 12 ms | 2 ms | 0 ms | 127 ms | 94 ms | 342 ms |
 | studentai10000 | 157 ms | 71 ms | 26 ms | 2 ms | 150 ms | 103 ms | 346 ms |
