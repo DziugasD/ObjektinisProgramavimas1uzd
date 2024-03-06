@@ -1,17 +1,18 @@
-# ObjektinisProgramavimas v0.3
+# ObjektinisProgramavimas v0.4
 
 Programa skirta skaičiuoti galutinį balą pagal įvestus duomenis.
 
-Programa pakeista pagal programavimo standartus. Sudarytas daugiafailis projektas, patobulintas algoritmas randantis klaidas.  
-	
+Programa pakeista pagal programavimo standartus. Sudarytas daugiafailis projektas, patobulintas algoritmas randantis klaidas.
 
-## Programos greitis skaitant iš failo (5 kartų vidurkis)
 
-|  | v0.2 |
-| :--- | ---- |
-| studentai10000 | 244 ms |
-| studentai100000 | 2305 ms |
-| studentai1000000 | 18784 ms |
+## Programos testavimo laikai (5 kartų vidurkis)
+
+|  |Failo generavimo laikas|Failo skaitymo greitis| Studentu rusiavimo laikas | Studentu paskirstymo laikas | Vargsu irasymo i faila laikas | Pirmunu irasymo i faila laikas |
+| :--- | ---- | ---- | ---- | ---- | ---- | ---- |
+| studentai1000 | 85 ms | 12 ms | 2 ms | 0 ms | 127 ms | 94 ms |
+| studentai10000 | 157 ms | 71 ms | 26 ms | 2 ms | 150 ms | 103 ms |
+| studentai100000 | 480 ms | 640 ms | 356 ms | 27 ms | 192 ms | 216 ms |
+| studentai1000000 | 3375 ms | 5634 ms | 3749 ms | 359 ms | 1265 ms | 1703 ms |
 
 ## Funkcionalumas
 
