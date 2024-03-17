@@ -356,9 +356,15 @@ void laikoSkaiciavimasStrukturos(ifstream &fd){
         vieta = upper_bound(pirmunai.begin(), pirmunai.end(), 5.0, compareByGalutinis);
     else
         vieta = upper_bound(pirmunai.begin(), pirmunai.end(), 5.0, compareByMediana);
-	copy(vieta, pirmunai.end(), back_inserter(vargsai));
-	pirmunai.erase(vieta, pirmunai.end());
 
+	if constexpr (is_same<Container, list<studentas>>::value){
+        vargsai.splice(vargsai.begin(), pirmunai, vieta, pirmunai.end());
+	}
+	else{
+        vargsai.assign(vieta, pirmunai.end());
+//        copy(vieta, pirmunai.end(), back_inserter(vargsai));
+        pirmunai.erase(vieta, pirmunai.end());
+	}
     end = chrono::high_resolution_clock::now();
 	diff = chrono::duration_cast<chrono::milliseconds>(end - start);
     cout << "Paskirstyti pirmunai ir vargsai per: " << diff.count() << " ms\n";
