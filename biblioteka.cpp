@@ -70,7 +70,9 @@ void failoSkaitymas(ifstream &fd, Container &v)
         cnt++;
     }
 }
-
+template void failoSkaitymas<std::vector<studentas>>(std::ifstream &, std::vector<studentas> &);
+template void failoSkaitymas<std::list<studentas>>(std::ifstream &, std::list<studentas> &);
+template void failoSkaitymas<std::deque<studentas>>(std::ifstream &, std::deque<studentas> &);
 
 void vardoSkaitymas(studentas &s)
 {
@@ -384,7 +386,7 @@ void uzd4(int dydis, string pavadinimas){
 
 //	failoGeneravimas(dydis, pavadinimas);
 
-    cout << "\n\nVector\n";
+//    cout << "\n\nVector\n";
 	ifstream fd(pavadinimas);
     laikoSkaiciavimasStrukturos<vector<studentas>>(fd);
     fd.close();
