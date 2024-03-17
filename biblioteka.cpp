@@ -30,23 +30,25 @@ vector<int> generuoti_pazymius(int dydis)
     return pazymiai;
 }
 
-void failoSkaitymas(ifstream &fd, vector<studentas> &v)
+template <typename Container>
+void failoSkaitymas(ifstream &fd, Container &v)
 {
     long long cnt = 0;
     string s;
     std::stringstream buffer;
     buffer << fd.rdbuf();
-    std::stringstream::pos_type pos = buffer.tellg();
-    while(!buffer.eof())
-    {
-        getline(buffer, s);
-        cnt++;
+    if (std::is_same<Container, std::vector<studentas>>::value) {
+        std::stringstream::pos_type pos = buffer.tellg();
+        while(!buffer.eof())
+        {
+            getline(buffer, s);
+            cnt++;
+        }
+        buffer.clear();
+        buffer.seekg (pos, buffer.beg);
+        v.reserve(cnt);
+        cnt = 0;
     }
-    buffer.clear();
-    buffer.seekg (pos, buffer.beg);
-    v.reserve(cnt-1);
-//    cout << cnt << "\n";
-    cnt = 0;
     while(getline(buffer, s))
     {
         if(s=="") continue;
