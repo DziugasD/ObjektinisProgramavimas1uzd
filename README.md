@@ -42,8 +42,6 @@ Programa naudoja kelis konteinerių tipus apskaičiuoti veikimo spartą su skirt
 | studentai10000000 | 118809 ms | 83116 ms | 8002 ms | 293108 ms |
 
 
-
-
 ## Funkcionalumas
 
 - Įvedimo langas, kuriame vartotojas įveda studento vardą, pavardę, namų darbų pažymius ir egzamino rezultatą.
