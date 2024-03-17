@@ -265,7 +265,9 @@ bool compareByMediana(const double b, const studentas& a){
     return a.mediana < b;
 }
 
-void spausdinimasFaila(vector<studentas> &v, string pavadinimas){
+
+template <typename Container>
+void spausdinimasFaila(Container &v, string pavadinimas){
         stringstream spausdinimas;
     //Spausdinimas
     spausdinimas << left << setw(15)  << "Pavarde" << setw(10) << "Vardas" << setw(17) << "Galutinis (Vid.) " << setw(20) << "\\ Galutinis (Med.)\n";
@@ -275,15 +277,15 @@ void spausdinimasFaila(vector<studentas> &v, string pavadinimas){
 
 
     int vardoIlgis=0, pavardesIlgis = 0;
-    for (int i=0; i<v.size(); i++)
+    for (auto &i:v)
     {
-        vardoIlgis = max(vardoIlgis, (int) v[i].vardas.size());
-        pavardesIlgis = max(pavardesIlgis, (int) v[i].pavarde.size());
+        vardoIlgis = max(vardoIlgis, (int) i.vardas.size());
+        pavardesIlgis = max(pavardesIlgis, (int) i.pavarde.size());
     }
 
-    for (int i=0; i<v.size(); i++)
+    for (auto &i:v)
     {
-        spausdinimas << fixed << setprecision(2) << setw(pavardesIlgis+5) << v[i].pavarde << setw(vardoIlgis+5) << v[i].vardas << setw(19) << v[i].galutinis << setw(20) << v[i].mediana <<"\n";
+        spausdinimas << fixed << setprecision(2) << setw(pavardesIlgis+5) << i.pavarde << setw(vardoIlgis+5) << i.vardas << setw(19) << i.galutinis << setw(20) << i.mediana <<"\n";
     }
     ofstream fr(pavadinimas);
     fr << spausdinimas.rdbuf();
@@ -359,18 +361,17 @@ void laikoSkaiciavimasStrukturos(ifstream &fd){
 	diff = chrono::duration_cast<chrono::milliseconds>(end - start);
     cout << "Paskirstyti pirmunai ir vargsai per: " << diff.count() << " ms\n";
 
-//
-//    start = chrono::high_resolution_clock::now();
-//	spausdinimasFaila(pirmunai, "pirmunai.txt");
-//    end = chrono::high_resolution_clock::now();
-//	diff = chrono::duration_cast<chrono::milliseconds>(end - start);
-//    cout << "Isspausdintas pirmunu failas per: " << diff.count() << " ms\n";
-//
-//    start = chrono::high_resolution_clock::now();
-//	spausdinimasFaila(vargsai, "vargsai.txt");
-//    end = chrono::high_resolution_clock::now();
-//	diff = chrono::duration_cast<chrono::milliseconds>(end - start);
-//    cout << "Isspausdintas vargsu failas per: " << diff.count() << " ms\n";
+    start = chrono::high_resolution_clock::now();
+	spausdinimasFaila(pirmunai, "pirmunai.txt");
+    end = chrono::high_resolution_clock::now();
+	diff = chrono::duration_cast<chrono::milliseconds>(end - start);
+    cout << "Isspausdintas pirmunu failas per: " << diff.count() << " ms\n";
+
+    start = chrono::high_resolution_clock::now();
+	spausdinimasFaila(vargsai, "vargsai.txt");
+    end = chrono::high_resolution_clock::now();
+	diff = chrono::duration_cast<chrono::milliseconds>(end - start);
+    cout << "Isspausdintas vargsu failas per: " << diff.count() << " ms\n";
 
 
     auto visasLaikasPab = chrono::high_resolution_clock::now();
