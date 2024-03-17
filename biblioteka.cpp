@@ -36,10 +36,19 @@ void failoSkaitymas(ifstream &fd, vector<studentas> &v)
     string s;
     std::stringstream buffer;
     buffer << fd.rdbuf();
-
+    std::stringstream::pos_type pos = buffer.tellg();
     while(!buffer.eof())
     {
         getline(buffer, s);
+        cnt++;
+    }
+    buffer.clear();
+    buffer.seekg (pos, buffer.beg);
+    v.reserve(cnt-1);
+//    cout << cnt << "\n";
+    cnt = 0;
+    while(getline(buffer, s))
+    {
         if(s=="") continue;
         if(cnt)
         {
@@ -234,7 +243,8 @@ void failoGeneravimas(int dydis, string pavadinimas){
 		for(int j=0; j<11; j++){
 			buf << setw(6) << rand()%10;
 		}
-		buf << "\n";
+		if(i!=dydis)
+            buf << "\n";
 	}
 	ofstream fr(pavadinimas);
 	fr << buf.rdbuf();
@@ -244,22 +254,6 @@ void failoGeneravimas(int dydis, string pavadinimas){
 	cout << "Sugeneruotas " << pavadinimas << " failas per: " << diff.count() << " ms\n";
 }
 
-//
-//auto binary_search(vector<studentas> &v, double target){
-//	auto low = v.begin();
-//	auto high = v.end();
-//
-//	while(low!=high){
-//		auto mid = low + (high-low) / 2;
-//		if(mid -> galutinis <= target){
-//			low = mid +1;
-//		}
-//		else{
-//			high = mid;
-//		}
-//	}
-//	return low;
-//}
 
 bool compareByGalutinis(const double b, const studentas& a){
     return a.galutinis < b;
@@ -297,7 +291,7 @@ void spausdinimasFaila(vector<studentas> &v, string pavadinimas){
 void uzd4(int dydis, string pavadinimas){
     cout << "\n" << pavadinimas.substr(0, pavadinimas.size()-4) << "\n";
 
-	failoGeneravimas(dydis, pavadinimas);
+//	failoGeneravimas(dydis, pavadinimas);
 
     auto visasLaikas = chrono::high_resolution_clock::now();
 
