@@ -48,24 +48,24 @@ Programa naudoja kelis konteinerių tipus apskaičiuoti veikimo spartą su skirt
 | :--- | ---- | ---- | ---- | ---- |
 | studentai1000 | 0 ms | 0 ms | 0 ms | 0 ms |
 | studentai10000 | 10 ms | 0 ms | 0 ms | 0 ms |
-| studentai100000 | 60 ms | 50 ms | 50 ms | 0 ms |
-| studentai1000000 | 674 ms | 456 ms | 592 ms | 34 ms |
+| studentai100000 | 60 ms | 50 ms | 50 ms | 40 ms |
+| studentai1000000 | 674 ms | 456 ms | 592 ms | 432 ms |
 
 #### List
 |  | Strategija 1 | Strategija 2 | Strategija 3 | Originali strategija |
 | :--- | ---- | ---- | ---- | ---- |
 | studentai1000 | 0 ms | 0 ms | 0 ms | 0 ms |
 | studentai10000 | 10 ms | 0 ms | 0 ms | 0 ms |
-| studentai100000 | 142 ms | 110 ms | 110 ms | 10 ms |
-| studentai1000000 | 1498 ms | 1188 ms | 1145 ms | 142 ms |
+| studentai100000 | 142 ms | 110 ms | 110 ms | 42 ms |
+| studentai1000000 | 1498 ms | 1188 ms | 1145 ms | 375 ms |
 
 #### Deque
 |  | Strategija 1 | Strategija 2 | Strategija 3 | Originali strategija |
 | :--- | ---- | ---- | ---- | ---- |
 | studentai1000 | 0 ms | 0 ms | 0 ms | 0 ms |
 | studentai10000 | 10 ms | 0 ms | 0 ms | 10 ms |
-| studentai100000 | 70 ms | 50 ms | 57 ms | 10 ms |
-| studentai1000000 | 663 ms | 493 ms | 502 ms | 68 ms |
+| studentai100000 | 70 ms | 50 ms | 57 ms | 45 ms |
+| studentai1000000 | 663 ms | 493 ms | 502 ms | 496 ms |
 
 ## Funkcionalumas
 
