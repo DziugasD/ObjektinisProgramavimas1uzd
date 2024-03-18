@@ -56,9 +56,9 @@ int main()
 		if(variantas == 6){
 //			uzd4(1000, "studentai1000.txt");
 //			uzd4(10000, "studentai10000.txt");
-//			uzd4(100000, "studentai100000.txt");
+			uzd4(100000, "studentai100000.txt");
 //			uzd4(1000000, "studentai1000000.txt");
-			uzd4(10000000, "studentai10000000.txt");
+//			uzd4(10000000, "studentai10000000.txt");
 			continue;
 		}
         baloSkaiciavimas(s);

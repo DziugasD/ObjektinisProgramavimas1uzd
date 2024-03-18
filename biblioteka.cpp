@@ -294,7 +294,83 @@ void spausdinimasFaila(Container &v, string pavadinimas){
     fr.close();
 }
 
+template <typename Container>
+void Strategija1(Container &a, int x){
+    auto start = chrono::high_resolution_clock::now();
 
+    typename Container::iterator vieta;
+    if(x==1)
+        vieta = upper_bound(a.begin(), a.end(), 5.0, compareByGalutinis);
+    else
+        vieta = upper_bound(a.begin(), a.end(), 5.0, compareByMediana);
+
+    template Container b, c;
+
+    b.insert(b.begin(), a.begin(), vieta);
+    c.insert(c.begin(), vieta, a.end());
+
+    auto end = chrono::high_resolution_clock::now();
+	auto diff = chrono::duration_cast<chrono::milliseconds>(end - start);
+    cout << "Strategija1 Paskirstyti pirmunai ir vargsai per: " << diff.count() << " ms\n";
+}
+
+template <typename Container>
+void Strategija2(Container &a, Container &b, int x){
+    auto start = chrono::high_resolution_clock::now();
+
+    typename Container::iterator vieta;
+    if(x==1)
+        vieta = upper_bound(a.begin(), a.end(), 5.0, compareByGalutinis);
+    else
+        vieta = upper_bound(a.begin(), a.end(), 5.0, compareByMediana);
+
+    b.insert(b.begin(), vieta, a.end());
+    a.erase(vieta, a.end());
+
+    auto end = chrono::high_resolution_clock::now();
+	auto diff = chrono::duration_cast<chrono::milliseconds>(end - start);
+    cout << "Strategija2 Paskirstyti pirmunai ir vargsai per: " << diff.count() << " ms\n";
+}
+
+template <typename Container>
+void Strategija3(Container &a, Container &b, int x){
+    auto start = chrono::high_resolution_clock::now();
+
+    typename Container::iterator vieta;
+    if(x==1)
+        vieta = upper_bound(a.begin(), a.end(), 5.0, compareByGalutinis);
+    else
+        vieta = upper_bound(a.begin(), a.end(), 5.0, compareByMediana);
+
+
+
+    auto end = chrono::high_resolution_clock::now();
+	auto diff = chrono::duration_cast<chrono::milliseconds>(end - start);
+    cout << "Strategija3 Paskirstyti pirmunai ir vargsai per: " << diff.count() << " ms\n";
+}
+
+template <typename Container>
+void Strategija4(Container &a, Container &b, int x){
+    auto start = chrono::high_resolution_clock::now();
+
+    typename Container::iterator vieta;
+    if(x==1)
+        vieta = upper_bound(a.begin(), a.end(), 5.0, compareByGalutinis);
+    else
+        vieta = upper_bound(a.begin(), a.end(), 5.0, compareByMediana);
+
+	if constexpr (is_same<Container, list<studentas>>::value){
+        b.splice(b.begin(), a, vieta, a.end());
+	}
+	else{
+        b.assign(vieta, a.end());
+        a.erase(vieta, a.end());
+	}
+
+    auto end = chrono::high_resolution_clock::now();
+	auto diff = chrono::duration_cast<chrono::milliseconds>(end - start);
+    cout << "Strategija4 Paskirstyti pirmunai ir vargsai per: " << diff.count() << " ms\n";
+}
 
 
 
@@ -343,31 +419,15 @@ void laikoSkaiciavimasStrukturos(ifstream &fd){
             sort(pirmunai.begin(), pirmunai.end(), sortbyMediana);
     }
 
-
     end = chrono::high_resolution_clock::now();
 	diff = chrono::duration_cast<chrono::milliseconds>(end - start);
     cout << "Surikiuoti studentai per: " << diff.count() << " ms\n";
 
 
-    start = chrono::high_resolution_clock::now();
-
-    typename Container::iterator vieta;
-    if(x==1)
-        vieta = upper_bound(pirmunai.begin(), pirmunai.end(), 5.0, compareByGalutinis);
-    else
-        vieta = upper_bound(pirmunai.begin(), pirmunai.end(), 5.0, compareByMediana);
-
-	if constexpr (is_same<Container, list<studentas>>::value){
-        vargsai.splice(vargsai.begin(), pirmunai, vieta, pirmunai.end());
-	}
-	else{
-        vargsai.assign(vieta, pirmunai.end());
-//        copy(vieta, pirmunai.end(), back_inserter(vargsai));
-        pirmunai.erase(vieta, pirmunai.end());
-	}
-    end = chrono::high_resolution_clock::now();
-	diff = chrono::duration_cast<chrono::milliseconds>(end - start);
-    cout << "Paskirstyti pirmunai ir vargsai per: " << diff.count() << " ms\n";
+    Strategija1(pirmunai, x);
+    Strategija2(pirmunai, vargsai, x);
+//    Strategija3(pirmunai, vargsai, x);
+    Strategija4(pirmunai, vargsai, x);
 
     start = chrono::high_resolution_clock::now();
 	spausdinimasFaila(pirmunai, "pirmunai.txt");
@@ -392,7 +452,7 @@ void uzd4(int dydis, string pavadinimas){
 
 //	failoGeneravimas(dydis, pavadinimas);
 
-//    cout << "\n\nVector\n";
+    cout << "\n\nVector\n";
 	ifstream fd(pavadinimas);
     laikoSkaiciavimasStrukturos<vector<studentas>>(fd);
     fd.close();
