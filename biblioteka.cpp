@@ -342,7 +342,9 @@ void Strategija3(Container &a, Container &b, int x){
     else
         vieta = upper_bound(a.begin(), a.end(), 5.0, compareByMediana);
 
+    std::copy(vieta, a.end(), std::back_inserter(b));
 
+    a.erase(vieta, a.end());
 
     auto end = chrono::high_resolution_clock::now();
 	auto diff = chrono::duration_cast<chrono::milliseconds>(end - start);
@@ -424,9 +426,9 @@ void laikoSkaiciavimasStrukturos(ifstream &fd){
     cout << "Surikiuoti studentai per: " << diff.count() << " ms\n";
 
 
-    Strategija1(pirmunai, x);
-    Strategija2(pirmunai, vargsai, x);
-//    Strategija3(pirmunai, vargsai, x);
+//    Strategija1(pirmunai, x);
+//    Strategija2(pirmunai, vargsai, x);
+    Strategija3(pirmunai, vargsai, x);
     Strategija4(pirmunai, vargsai, x);
 
     start = chrono::high_resolution_clock::now();
