@@ -41,6 +41,31 @@ Programa naudoja kelis konteinerių tipus apskaičiuoti veikimo spartą su skirt
 | studentai1000000 | 10344 ms | 6709 ms | 496 ms | 22012 ms |
 | studentai10000000 | 118809 ms | 83116 ms | 8002 ms | 293108 ms |
 
+## Skirstymo strategijų testavimo laikai (5 kartų vidurkis)
+
+#### Vector
+|  | Strategija 1 | Strategija 2 | Strategija 3 | Originali strategija |
+| :--- | ---- | ---- | ---- | ---- |
+| studentai1000 | 0 ms | 0 ms | 0 ms | 0 ms |
+| studentai10000 | 10 ms | 0 ms | 0 ms | 190 ms |
+| studentai100000 | 60 ms | 50 ms | 40 ms | 0 ms |
+| studentai1000000 | 674 ms | 456 ms | 432 ms | 34 ms |
+
+#### List
+|  | Strategija 1 | Strategija 2 | Strategija 3 | Originali strategija |
+| :--- | ---- | ---- | ---- | ---- |
+| studentai1000 | 0 ms | 0 ms | 0 ms | 0 ms |
+| studentai10000 | 10 ms | 0 ms | 0 ms | 0 ms |
+| studentai100000 | 142 ms | 110 ms | 42 ms | 10 ms |
+| studentai1000000 | 1498 ms | 1188 ms | 375 ms | 142 ms |
+
+#### Deque
+|  | Strategija 1 | Strategija 2 | Strategija 3 | Originali strategija |
+| :--- | ---- | ---- | ---- | ---- |
+| studentai1000 | 0 ms | 0 ms | 0 ms | 0 ms |
+| studentai10000 | 10 ms | 0 ms | 0 ms | 10 ms |
+| studentai100000 | 70 ms | 50 ms | 45 ms | 10 ms |
+| studentai1000000 | 663 ms | 493 ms | 496 ms | 68 ms |
 
 ## Funkcionalumas
 
