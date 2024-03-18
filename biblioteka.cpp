@@ -304,7 +304,7 @@ void Strategija1(Container &a, int x){
     else
         vieta = upper_bound(a.begin(), a.end(), 5.0, compareByMediana);
 
-    template Container b, c;
+    Container b, c;
 
     b.insert(b.begin(), a.begin(), vieta);
     c.insert(c.begin(), vieta, a.end());
@@ -376,7 +376,7 @@ void Strategija4(Container &a, Container &b, int x){
 
 template <typename Container>
 void laikoSkaiciavimasStrukturos(ifstream &fd){
- auto visasLaikas = chrono::high_resolution_clock::now();
+    auto visasLaikas = chrono::high_resolution_clock::now();
 
     auto start = chrono::high_resolution_clock::now();
 	Container pirmunai, vargsai;
