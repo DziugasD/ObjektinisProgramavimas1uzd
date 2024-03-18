@@ -73,21 +73,21 @@ Programa naudoja kelis konteinerių tipus apskaičiuoti veikimo spartą su skirt
 - Galutinio balo skaičiavimas pagal vidurkį ar medianą.
 - Išvedimo langas, kuriame pateikiami studentų galutiniai balai.
 
-Releasų istorija
+## Releasų istorija
 
-    V.pradine: Sukurta preliminari programa, kurioje vartotojui įvedus studentų kiekį ir studentų duomenis (vardą, pavardę, pažymius) apskaičiuoja ir atspausdina studento duomenis su galutiniu rezultatu ir mediana.
-    V0.1: Programa papildyta taip, kad iš anksto nėra žinomas nei namų darbų kiekis, nei mokinių. Pridėta galimybė, jog mokinio gautieji balai už namų darbus bei egzaminą būtų generuojami atsitiktinai. Programa suskirstyta į du failus: Masyvai.cpp ir Vektoriai.cpp. Masyvai.cpp faile duomenys yra saugomi C masyve, o Vektoriai.cpp faile std::vector konteineryje. Sukurtas meniu.
-    V0.2: Pridėta galimybė nuskaityti duomenis iš failo ir patobulintas atspausdinimo metodas.
-    V0.3: Struktūros perkeltos į atraštinius failus, o funkcijos į atskirą funkcijų failą. Pridėtas išimčių valdymas.
-    V0.4: Sukurta failų generatoriaus funkcija. Studentai surūšiuojami į dvi kategorijas pagal pažymius ir išvedami į du naujus failus. Atlikta programos veikimo greičio analizė.
-    V1.0: Atliktas konteinerių testavimas su vector, list ir deque konteineriais. Atliktas konteinerių skaidymo į dvi dalis testavimas. 
+- V.pradine: Sukurta preliminari programa, kurioje vartotojui įvedus studentų kiekį ir studentų duomenis (vardą, pavardę, pažymius) apskaičiuoja ir atspausdina studento duomenis su galutiniu rezultatu ir mediana.
+- V0.1: Programa papildyta taip, kad iš anksto nėra žinomas nei namų darbų kiekis, nei mokinių. Pridėta galimybė, jog mokinio gautieji balai už namų darbus bei egzaminą būtų generuojami atsitiktinai. Programa suskirstyta į du failus: Masyvai.cpp ir Vektoriai.cpp. Masyvai.cpp faile duomenys yra saugomi C masyve, o Vektoriai.cpp faile std::vector konteineryje. Sukurtas meniu.
+- V0.2: Pridėta galimybė nuskaityti duomenis iš failo ir patobulintas atspausdinimo metodas.
+- V0.3: Struktūros perkeltos į atraštinius failus, o funkcijos į atskirą funkcijų failą. Pridėtas išimčių valdymas.
+- V0.4: Sukurta failų generatoriaus funkcija. Studentai surūšiuojami į dvi kategorijas pagal pažymius ir išvedami į du naujus failus. Atlikta programos veikimo greičio analizė.
+- V1.0: Atliktas konteinerių testavimas su vector, list ir deque konteineriais. Atliktas konteinerių skaidymo į dvi dalis testavimas. 
 
-##Strategijų tyrimas
+## Strategijų tyrimas
 
 Strategijų tyrimas buvo atliktas siekiant išsiaiškinti veikimo spartą su skirtingomis skirstymo strategijomis. Buvo išmatuotas failo skaitymo greitis, studentų rūšiavimo laikas, studentų paskirstymo laikas ir viso veikimo laikas naudojant skirtingus konteinerių tipus (Vector, List, Deque) bei keletą skirstymo strategijų.
 Greičiausiai veikia strategijos kuriose mažai kopijavimo atminties blokuose. 
 
-##Programos diegimas ir paleidimas
+## Programos diegimas ir paleidimas
 
 Būtina turėti MinGW ir make instaliuotą kompiuteryje. 
 Norint įdiegti ir paleisti programą naudojant Make, atlikite šiuos veiksmus:
