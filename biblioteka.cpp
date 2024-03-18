@@ -391,18 +391,18 @@ void laikoSkaiciavimasStrukturos(ifstream &fd){
 
     auto rinkLaikas = chrono::high_resolution_clock::now();
     int x = 0;
-//    cout << "Rusiuoti pagal 1 - Galutinis vid., 2 - Galutinis med.\n";
-//    while(!(cin >> x) && x>2 && x<1){
-//		try{
-//			throw runtime_error("Netinkama ivestis\n");
-//		}
-//		catch(const runtime_error &e){
-//			cin.clear();
-//			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-//			cout << e.what();
-//			cout << "Rusiuoti pagal 1 - Galutinis vid., 2 - Galutinis med.\n";
-//		}
-//    }
+    cout << "Rusiuoti pagal 1 - Galutinis vid., 2 - Galutinis med.\n";
+    while(!(cin >> x) && x>2 && x<1){
+		try{
+			throw runtime_error("Netinkama ivestis\n");
+		}
+		catch(const runtime_error &e){
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << e.what();
+			cout << "Rusiuoti pagal 1 - Galutinis vid., 2 - Galutinis med.\n";
+		}
+    }
     auto rinkLaikasPab = chrono::high_resolution_clock::now();
 	auto rinkLaikasdiff = chrono::duration_cast<chrono::milliseconds>(rinkLaikasPab - rinkLaikas);
 
@@ -426,8 +426,8 @@ void laikoSkaiciavimasStrukturos(ifstream &fd){
     cout << "Surikiuoti studentai per: " << diff.count() << " ms\n";
 
 
-//    Strategija1(pirmunai, x);
-//    Strategija2(pirmunai, vargsai, x);
+    Strategija1(pirmunai, x);
+    Strategija2(pirmunai, vargsai, x);
     Strategija3(pirmunai, vargsai, x);
     Strategija4(pirmunai, vargsai, x);
 
@@ -452,7 +452,7 @@ void laikoSkaiciavimasStrukturos(ifstream &fd){
 void uzd4(int dydis, string pavadinimas){
     cout << "\n" << pavadinimas.substr(0, pavadinimas.size()-4) << "\n";
 
-//	failoGeneravimas(dydis, pavadinimas);
+	failoGeneravimas(dydis, pavadinimas);
 
     cout << "\n\nVector\n";
 	ifstream fd(pavadinimas);
